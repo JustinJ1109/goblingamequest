@@ -52,6 +52,7 @@ export default function QuestList() {
 
     const gridRef = useRef()
     const [columnDefs, setColumnDefs] = useState([
+        { headerName: 'Index', valueGetter: "node.rowIndex + 1" },
         { field: 'title' },
         { field: 'type' },
         { field: 'summary' },

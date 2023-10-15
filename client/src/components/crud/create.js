@@ -30,6 +30,8 @@ export default function Create() {
         e.preventDefault()
         // When a post request is sent to the create url, we'll add a new quest to the database.
         const newQuest = { ...questForm }
+        console.log(questForm)
+        return
         await fetch("http://localhost:5000/quest/add", {
             method: "POST",
             headers: {
@@ -57,7 +59,7 @@ export default function Create() {
 
     // This following section will display the form that takes the input from the user.
     return (
-        <div>
+        <div className="container">
             <h3>Create New Quest</h3>
             <form onSubmit={onSubmit}>
                 <TextObject label="Title" onChange={(e) => updateQuestForm({ title: e.target.value })} />

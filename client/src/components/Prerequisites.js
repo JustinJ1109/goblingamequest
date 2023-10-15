@@ -1,5 +1,8 @@
 import { SelectObject } from "./FormFillable"
 import { prerequisiteOptions } from "../schemas/prerequisites"
+import QuestPrereq from "./prerequisites/QuestPrereq"
+import ItemPrereq from "./prerequisites/ItemPrereq"
+import BiomePrereq from "./prerequisites/BiomePrereq"
 
 const Prerequisites = ({ onChange, form, setForm }) => {
 
@@ -32,6 +35,7 @@ const Prerequisites = ({ onChange, form, setForm }) => {
             {form?.prerequisites?.map((pr, i) => {
                 return (
                     <div key={`${i}${pr}`}>
+                        <hr />
                         <SelectObject
                             label=""
                             options={prerequisiteOptions}
@@ -45,6 +49,11 @@ const Prerequisites = ({ onChange, form, setForm }) => {
                             removable={true}
                             removeItem={() => removeFromForm(i)}
                         />
+                        <div className="container">
+                            {pr.type === "quest" && <QuestPrereq onChange={onChange} />}
+                            {pr.type === "item" && <ItemPrereq onChange={onChange} />}
+                            {pr.type === "biome" && <BiomePrereq onChange={onChange} />}
+                        </div>
 
                     </div>
                 )

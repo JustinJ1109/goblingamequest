@@ -10,7 +10,10 @@ const Prerequisites = ({ onChange, form, setForm }) => {
         setForm((prevForm) => ({
             ...prevForm, prerequisites: [
                 ...prevForm?.prerequisites,
-                { type: prerequisiteOptions[0] }
+                {
+                    type: prerequisiteOptions[0],
+                    objectId: ""
+                }
             ]
         }))
     }
@@ -28,7 +31,7 @@ const Prerequisites = ({ onChange, form, setForm }) => {
                 </div>
 
                 <div className="col">
-                    <input type="button" value="+" onClick={addToForm} />
+                    <input className="btn btn-success" type="button" value="+" onClick={addToForm} />
                 </div>
             </div>
 
@@ -42,7 +45,6 @@ const Prerequisites = ({ onChange, form, setForm }) => {
                             onChange={(e) => {
                                 let newPrereqs = form?.prerequisites
                                 newPrereqs[i] = { ...newPrereqs[i], type: e.target.value }
-                                console.log(newPrereqs)
                                 onChange({ ...form, prerequisites: newPrereqs })
                             }}
                             selected={pr.type}
@@ -50,7 +52,12 @@ const Prerequisites = ({ onChange, form, setForm }) => {
                             removeItem={() => removeFromForm(i)}
                         />
                         <div className="container">
-                            {pr.type === "quest" && <QuestPrereq onChange={onChange} />}
+                            {pr.type === "quest" && <QuestPrereq onChange={(e) => {
+                                console.log(form)
+                                let newQuestInfo = form.prerequisites[i]
+                                // onChange({...form, prerequisites: [...form.prerequisites.slice(0, i), newQuestInfo, ...form.prerequisites.slice(i+1)]})
+                            }}
+                            />}
                             {pr.type === "item" && <ItemPrereq onChange={onChange} />}
                             {pr.type === "biome" && <BiomePrereq onChange={onChange} />}
                         </div>

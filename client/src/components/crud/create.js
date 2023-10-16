@@ -3,6 +3,7 @@ import { useNavigate } from "react-router"
 import { CheckObject, SelectObject, TextObject } from "../FormFillable"
 import Prerequisites from "../Prerequisites"
 import { quests } from "../../schemas/quests"
+import QuestType from "../quest-type"
 
 export default function Create() {
     const [questForm, setQuestForm] = useState({
@@ -63,7 +64,9 @@ export default function Create() {
             <h3>Create New Quest</h3>
             <form onSubmit={onSubmit}>
                 <TextObject label="Title" onChange={(e) => updateQuestForm({ title: e.target.value })} />
-                <SelectObject label="Type" options={quests} onChange={(e) => updateQuestForm({ type: e.target.value })} />
+                <SelectObject label="Quest Type" options={quests} onChange={(e) => updateQuestForm({ type: e.target.value })} />
+                <QuestType type={questForm?.type} onChange={updateQuestForm} />
+
                 <TextObject label="Summary" onChange={(e) => updateQuestForm({ summary: e.target.value })} />
                 <TextObject label="Description" onChange={(e) => updateQuestForm({ description: e.target.value })} />
                 <div>

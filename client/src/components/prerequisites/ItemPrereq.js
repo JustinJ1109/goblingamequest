@@ -19,7 +19,7 @@ const ItemPrereq = ({ onChange }) => {
 
     return (
         <div>
-            <SelectObject label="Item" options={[]} />
+            <SelectObject label="Item" options={items.map((e) => e.name)} />
             <SelectObject label="State" options={["consumed", "owned"]} onChange={onChange} />
             <TextObject label="Quantity" />
         </div>

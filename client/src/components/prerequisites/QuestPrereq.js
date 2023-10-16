@@ -23,8 +23,10 @@ const QuestPrereq = ({ onChange }) => {
         <SelectObject
             label="Quest"
             selected={questOptions[0]?.title}
-            options={questOptions.map((e) => e.title)}
+            // options={questOptions.map((e) => e.title)}
+            options={["1", "2"]}
             onChange={onChange}
+            value={"1"}
         />
     )
 }

@@ -13,7 +13,7 @@ const SelectObject = ({ label, ...other }) => (
                 </select>
             </div>
             <div className="col">
-                {other?.removable && <input type="button" value="-" onClick={other?.removeItem} />}
+                {other?.removable && <input className="btn btn-danger" type="button" value="-" onClick={other?.removeItem} />}
             </div>
         </div>
     </div>
@@ -26,7 +26,7 @@ const TextObject = ({ label, ...other }) => (
                 <label htmlFor={`${label}-text`}>{label}</label>
             </div>
             <div className="col">
-                <input type="text" id={`${label}-text`} onChange={other?.onChange}></input>
+                <input placeholder={other?.placeholder} type="text" id={`${label}-text`} onChange={other?.onChange}></input>
             </div>
         </div>
         {other?.removable &&
